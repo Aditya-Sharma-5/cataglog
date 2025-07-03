@@ -1,14 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: ${{ values.component_id | dump }}
-  {%- if values.description %}
-  description: ${{ values.description | dump }}
-  {%- endif %}
+  name: my-component-id  # Replace with actual component ID
+  description: A sample description for the component  # Replace with actual description
   annotations:
-    github.com/project-slug: ${{ values.destination.owner | dump }}/{{ values.destination.repo | dump }}
+    github.com/project-slug: owner/repo  # Replace with actual owner/repo
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   lifecycle: experimental
-  owner: ${{ values.owner | dump }}
+  owner: owner@example.com  # Replace with actual owner email
