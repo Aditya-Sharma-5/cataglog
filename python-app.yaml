@@ -1,0 +1,83 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: python-app-template
+  title: Python Application Template
+  description: Template for creating a Python application component in Backstage
+spec:
+  owner: backstage/techdocs-core
+  type: service
+
+  parameters:
+    - title: Application Details
+      required:
+        - name
+        - environment
+        - version
+      properties:
+        name:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:autofocus: true
+          ui:options:
+            rows: 1
+        environment:
+          title: Environment
+          type: string
+          description: The environment in which the application is running (e.g., production, staging)
+          enum:
+            - production
+            - staging
+            - development
+          default: production
+        version:
+          title: Version
+          type: string
+          description: The version of the application
+          default: 1.0.0
+    - title: Choose a Repository
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+
+  steps:
+    - id: fetch-base
+      name: Fetch Base
+      action: fetch:template
+      input:
+        url: ./template
+        values:
+          name: ${{ parameters.name }}
+          environment: ${{ parameters.environment }}
+          version: ${{ parameters.version }}
+
+    - id: fetch-docs
+      name: Fetch Docs
+      action: fetch:plain
+      input:
+        targetPath: ./community
+        url: https://github.com/backstage/community/tree/main/backstage-community-sessions
+
+    - id: publish
+      name: Publish
+      action: publish:github
+      input:
+        allowedHosts: ['github.com']
+        description: This is ${{ parameters.name }} running in ${{ parameters.environment }} environment.
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: 'main'
+
+    - id: register
+      name: Register
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: '/catalog-info.yaml'
