@@ -1,12 +1,12 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: my-component-id  # Replace with actual component ID
+  name: Aditya-Hardik  # Replace with actual component ID
   description: A sample description for the component  # Replace with actual description
   annotations:
-    github.com/project-slug: owner/repo  # Replace with actual owner/repo
+    github.com/project-slug: Aditya-Sharma-5/cataglog
     backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   lifecycle: experimental
-  owner: owner@example.com  # Replace with actual owner email
+  owner: aditya.sharma@kpit.com  # Replace with actual owner email
