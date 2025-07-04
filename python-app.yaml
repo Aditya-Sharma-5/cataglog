@@ -5,7 +5,7 @@ metadata:
   title: Python Application Template
   description: Template for creating a Python application component in Backstage
 spec:
-  owner: backstage/techdocs-core
+  owner: Aditya-Sharma-5
   type: service
  
   parameters:
