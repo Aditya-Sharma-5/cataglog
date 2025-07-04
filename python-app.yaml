@@ -70,7 +70,10 @@ spec:
       name: Publish
       action: publish:github
       input:
-
+        # allowedHosts: ['github.com']
+        description: This is ${{ parameters.name }} running in ${{ parameters.environment }} environment.
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: 'main'
     - id: register
       name: Register
       action: catalog:register
