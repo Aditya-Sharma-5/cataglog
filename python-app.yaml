@@ -7,7 +7,7 @@ metadata:
 spec:
   owner: backstage/techdocs-core
   type: service
-
+ 
   parameters:
     - title: Application Details
       required:
@@ -47,7 +47,7 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-
+ 
   steps:
     - id: fetch-base
       name: Fetch Base
@@ -58,22 +58,22 @@ spec:
           name: ${{ parameters.name }}
           environment: ${{ parameters.environment }}
           version: ${{ parameters.version }}
-
+ 
     - id: fetch-docs
       name: Fetch Docs
       action: fetch:plain
       input:
         targetPath: ./community
         url: https://github.com/backstage/community/tree/main/backstage-community-sessions
-
+ 
     - id: publish
       name: Publish
       action: publish:github
       input:
-        # allowedHosts: ['github.com']
         description: This is ${{ parameters.name }} running in ${{ parameters.environment }} environment.
         repoUrl: ${{ parameters.repoUrl }}
         defaultBranch: 'main'
+ 
     - id: register
       name: Register
       action: catalog:register
