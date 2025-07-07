@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: python-app-template
-  title: Aditya Python Application Template
+  title: Python Application Template
   description: Template for creating a Python application component in Backstage
 spec:
   owner: Aditya-Sharma-5
