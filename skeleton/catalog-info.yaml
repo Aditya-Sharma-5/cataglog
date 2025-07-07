@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: Aditya-Hardik  # Replace with actual component ID
+  name: Aditya  # Replace with actual component ID
   description: A sample description for the component  # Replace with actual description
   annotations:
     github.com/project-slug: Aditya-Sharma-5/cataglog
