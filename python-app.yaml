@@ -2,7 +2,7 @@ apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
   name: python-app-template
-  title: Python Application Template
+  title: Aditya Python Application Template
   description: Template for creating a Python application component in Backstage
 spec:
   owner: Aditya-Sharma-5
@@ -53,7 +53,7 @@ spec:
       name: Fetch Base
       action: fetch:template
       input:
-        url: ./content
+        url: ./skeleton
         values:
           name: ${{ parameters.name }}
           environment: ${{ parameters.environment }}
@@ -79,7 +79,7 @@ spec:
       action: catalog:register
       input:
         repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
-        catalogInfoPath: '/backstage-app/catalog-info.yaml'
+        catalogInfoPath: '/catalog-info.yaml'
 
   output:
     links:
